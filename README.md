@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# Deel Frontend Challenge 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React application to create a virtualized grid
 
-## Available Scripts
 
-In the project directory, you can run:
+## Tools
 
-### `npm start`
+- [React](https://reactjs.org/)
+- [React Router Dom](https://www.npmjs.com/package/react-router-dom)
+- [React testing library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Styled Component](https://styled-components.com/)
+- [Faker](https://www.npmjs.com/package/@faker-js/faker)
+- [EsLint](https://www.npmjs.com/package/eslint)
+- [React-window](https://www.npmjs.com/package/react-window)
+- [react-virtualized-auto-sizer](https://www.npmjs.com/package/react-virtualized-auto-sizer)
+- [unsplash.js](https://github.com/unsplash/unsplash-js)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Prerequisites
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The following should be installed in your machine
 
-### `npm test`
+- Node v20.12.2 and above
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How To Install And Run The Application on local
 
-### `npm run build`
+- clone git repo
+- rename .env.example to .env add your access key to REACT_APP_UNSPLASH_ACCESS_KEY=
+- Install all the dependancies by running the `npm install`
+- Start the application on development mode by running `npm start`
+- Run tests by running `npm test`
+- The tests are in the src/___tests___ folder
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## How I ensured performance
+1. By using React.lazy to lazy load component
+2. By properly logging and display errors
+3. By use useCallback and React.memo where necessary
+4. By using appropriate library to ensure virtualization of the grid
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Issues
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Issues are always very welcome. Please be sure to create a constructive issue when neccessary.

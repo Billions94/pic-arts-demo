@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { ReactNode, lazy, Suspense } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { GlobalStyle } from "./styles";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const MasonryGrid = lazy(() =>
+  import("./components/MasonryGrid").then((module) => ({
+    default: module.MasonryGrid,
+  }))
+);
+const PhotoDetails = lazy(() =>
+  import("./components/PhotoDetails").then((module) => ({
+    default: module.PhotoDetails,
+  }))
+);
+
+interface ErrorBoundaryState {
+  hasError: boolean;
 }
+
+type PropsWithChildren<P = {}> = P & { children?: ReactNode | undefined };
+
+class ErrorBoundary extends React.Component<
+  PropsWithChildren,
+  ErrorBoundaryState
+> {
+  constructor(props: PropsWithChildren) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    return { hasError: true };
+  }
+
+  render(): ReactNode {
+    if (this.state.hasError) {
+      return <p>Loading failed! Please reload.</p>;
+    }
+
+    return this.props.children;
+  }
+}
+
+const App: React.FC = () => {
+  return (
+    <ErrorBoundary>
+      <GlobalStyle />
+      <Router>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" index element={<MasonryGrid />} />
+            <Route path="/photo/:id" element={<PhotoDetails />} />
+          </Routes>
+        </Suspense>
+      </Router>
+    </ErrorBoundary>
+  );
+};
 
 export default App;
